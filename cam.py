@@ -1,9 +1,32 @@
+# main.py
+# This script captures video from a USB camera connected to a Raspberry Pi
+# and displays it in a window on the Raspberry Pi's desktop.
 
 import cv2
+import sys
 
 def main():
-    print("Attempting to initialize the camera...")
-    cap = cv2.VideoCapture(1, cv2.CAP_V4L2)
+    """
+    Initializes the USB camera, captures the video feed frame by frame,
+    and displays it in a window.
+    Accepts an optional command-line argument for the camera index.
+    """
+    # --- Determine Camera Index ---
+    # Default to camera index 0
+    camera_index = 0
+    # If a command-line argument is provided, use it as the camera index
+    if len(sys.argv) > 1:
+        try:
+            camera_index = int(sys.argv[1])
+        except ValueError:
+            print(f"Error: Invalid camera index '{sys.argv[1]}'. Please provide an integer.")
+            return
+
+    # --- Camera Initialization ---
+    # cv2.VideoCapture() attempts to access the camera at the given index.
+    # We also specify the CAP_V4L2 backend, which is standard for Video4Linux on Raspberry Pi.
+    print(f"Attempting to initialize camera at index: {camera_index}...")
+    cap = cv2.VideoCapture(camera_index, cv2.CAP_V4L2)
 
     # --- Check if Camera Opened Successfully ---
     if not cap.isOpened():
@@ -51,3 +74,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
