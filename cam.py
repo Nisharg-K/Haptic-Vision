@@ -14,7 +14,7 @@ import sys
 # IMPORTANT: Change this to your device's serial port on the Raspberry Pi.
 # It will likely be '/dev/ttyACM0' or '/dev/ttyUSB0'.
 # Run 'ls /dev/tty*' in your terminal to find the correct port.
-SERIAL_PORT = '/dev/ttyACM0'
+SERIAL_PORT = '/dev/ttyUSB0'
 BAUD_RATE = 115200
 
 # Tesseract configuration for speed and accuracy on single words/lines.
