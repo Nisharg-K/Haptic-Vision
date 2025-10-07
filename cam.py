@@ -1,6 +1,3 @@
-# rpi_ocr.py
-# A script inspired by the user's code, adapted and optimized for Raspberry Pi.
-# It performs real-time Optical Character Recognition (OCR) on a video feed.
 
 import cv2
 import pytesseract
